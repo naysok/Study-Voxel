@@ -34,7 +34,7 @@ void draw() {
   }
 
 
-  save("contour/" + nf(frameCount, 4) + ".png");
+  save("contour/" + nf((frameCount-1), 4) + ".png");
   current_height += z_step;
 
   if (frameCount == end + 1) {
