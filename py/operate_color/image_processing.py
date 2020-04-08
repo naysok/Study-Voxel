@@ -62,7 +62,7 @@ class ImageProcessing():
 
     def up_scale(self, image, res):
         _size = image.size
-        new_image = Image.new("RGB", (_size[0] * res, _size[1] * res), (255, 255, 255))
+        new_image = Image.new("RGBA", (_size[0] * res, _size[1] * res), (255, 255, 255, 0))
         return new_image
 
 
@@ -78,16 +78,16 @@ class ImageProcessing():
 
         ### Stratasys_J750
         if mode == "stratasys":
-            _c_ = (0, 90, 158)
-            _m_ = (166, 33, 98)
-            _y_ = (200, 189, 3)
-            _k_ = (26, 26, 29)
+            _c_ = (0, 90, 158, 255)
+            _m_ = (166, 33, 98, 255)
+            _y_ = (200, 189, 3, 255)
+            _k_ = (26, 26, 29, 255)
 
         ### cmyk
         else:
-            _c_ = (0, 255, 255)
-            _m_ = (255, 0, 255)
-            _y_ = (255, 255, 0)
+            _c_ = (0, 255, 255, 255)
+            _m_ = (255, 0, 255, 255)
+            _y_ = (255, 255, 0, 255)
         
 
 
