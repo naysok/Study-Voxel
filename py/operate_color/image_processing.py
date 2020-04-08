@@ -47,12 +47,12 @@ class ImageProcessing():
         return [cc, mm, yy, kk]
 
 
-    def calc_cmy_count(self, cmyk, res):
+    def calc_cmy_count(self, cmyk, res, cc):
         c, m, y, k = cmyk
         sum_ = 300
 
         ### Color Correction = 0
-        color_correction = 1.2
+        color_correction = cc
         cc = round(((c / sum_) * (res*res)) + color_correction)
         mm = round(((m / sum_) * (res*res)) + color_correction)
         yy = round(((y / sum_) * (res*res)) + color_correction)
@@ -66,7 +66,7 @@ class ImageProcessing():
         return new_image
 
 
-    def put_cmyk(self, path, res):
+    def put_cmyk(self, path, res, color_correction):
 
         """
         ### Stratasys_J750
@@ -77,16 +77,17 @@ class ImageProcessing():
         """
 
         ### Stratasys_J750
-        _c_ = (0, 90, 158)
-        _m_ = (166, 33, 98)
-        _y_ = (200, 189, 3)
-        _k_ = (26, 26, 29)
+        # _c_ = (0, 90, 158)
+        # _m_ = (166, 33, 98)
+        # _y_ = (200, 189, 3)
+        # _k_ = (26, 26, 29)
 
         ### color code
-        # _c_ = (0, 255, 255)
-        # _m_ = (255, 0, 255)
-        # _y_ = (255, 255, 0)
+        _c_ = (0, 255, 255)
+        _m_ = (255, 0, 255)
+        _y_ = (255, 255, 0)
         
+
 
         ut = util.UTIL()
         
@@ -122,7 +123,7 @@ class ImageProcessing():
 
 
                 ### ========== CMY ==========
-                cc, mm, yy = self.calc_cmy_count(cmyk, res)
+                cc, mm, yy = self.calc_cmy_count(cmyk, res, color_correction)
                 _length = cc + mm + yy
                 ### ========== CMY ==========
 
@@ -148,8 +149,8 @@ class ImageProcessing():
                     # else:
                     #     new_image.putpixel(new_pt, (_k_))
         
-        new_image.show()
-        # new_image.save('_images_/dev.png', quality=100)
+        # new_image.show()
+        new_image.save('_images_/dev.png', quality=100)
 
         
         # return new_image
