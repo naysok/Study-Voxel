@@ -1,4 +1,5 @@
 import time
+from PIL import Image, ImageDraw
 
 from operate_color import calc_color, image_processing, util
 
@@ -6,21 +7,37 @@ ut = util.UTIL()
 im = image_processing.ImageProcessing()
 
 resoluiton = 4
-path = "./_images_/master.png"
-
-im.put_cmyk(path, resoluiton)
-
-
-# v = ut.set_vector(resoluiton)
-# print(v)
+mode = None
+color_correction = 0
 
 
-# time1 = time.time()
-# time2 = time.time()
-# time3 = time.time()
+path = "./_images_/color_gradation/master_1.png"
 
-# time_a  = time2 - time1
-# time_b  = time3 - time2
 
-# print("python - time : {} sec".format(time_a))
-# print("cython - time : {} sec".format(time_b))
+
+### mode 
+# mode = "stratasys"
+
+### color correction : 0
+color_correction = 0.5
+
+
+
+
+
+time1 = time.time()
+
+
+
+
+new_image = im.put_cmyk(path, resoluiton, mode, color_correction)
+
+# new_image.show()
+new_image.save('_images_/dev.png', quality=100)
+
+
+
+
+time2 = time.time()
+
+print("python - time : {} sec".format(time2 - time1))
