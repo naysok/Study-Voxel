@@ -152,8 +152,4 @@ class ImageProcessing():
                     # else:
                     #     new_image.putpixel(new_pt, (_k_))
         
-        # new_image.show()
-        new_image.save('_images_/dev.png', quality=100)
-
-        
-        # return new_image
+        return new_image
