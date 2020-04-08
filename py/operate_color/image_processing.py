@@ -61,8 +61,9 @@ class ImageProcessing():
 
 
     def up_scale(self, image, res):
+        ### "VeroClear", 227, 233, 253
         _size = image.size
-        new_image = Image.new("RGBA", (_size[0] * res, _size[1] * res), (255, 255, 255, 0))
+        new_image = Image.new("RGBA", (_size[0] * res, _size[1] * res), (227, 233, 253, 255))
         return new_image
 
 
