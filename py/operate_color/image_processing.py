@@ -66,7 +66,7 @@ class ImageProcessing():
         return new_image
 
 
-    def put_cmyk(self, path, res, color_correction):
+    def put_cmyk(self, path, res, mode, color_correction):
 
         """
         ### Stratasys_J750
@@ -77,15 +77,17 @@ class ImageProcessing():
         """
 
         ### Stratasys_J750
-        # _c_ = (0, 90, 158)
-        # _m_ = (166, 33, 98)
-        # _y_ = (200, 189, 3)
-        # _k_ = (26, 26, 29)
+        if mode == "stratasys":
+            _c_ = (0, 90, 158)
+            _m_ = (166, 33, 98)
+            _y_ = (200, 189, 3)
+            _k_ = (26, 26, 29)
 
-        ### color code
-        _c_ = (0, 255, 255)
-        _m_ = (255, 0, 255)
-        _y_ = (255, 255, 0)
+        ### cmyk
+        else:
+            _c_ = (0, 255, 255)
+            _m_ = (255, 0, 255)
+            _y_ = (255, 255, 0)
         
 
 
