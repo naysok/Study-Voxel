@@ -6,6 +6,7 @@
 
 
 import math
+import os
 import random
 
 
@@ -30,3 +31,7 @@ class UTIL():
 
     def pt2d_add(self, pt, vec):
         return (pt[0] + vec[0], pt[1] + vec[1])
+
+    
+    def get_number_of_files(self, dir_):
+        return len(os.listdir(dir_))
