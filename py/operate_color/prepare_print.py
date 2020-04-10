@@ -1,8 +1,3 @@
-import math
-import random
-import time
-
-
 from PIL import Image, ImageDraw
 
 from . import util, calc_color
@@ -14,6 +9,7 @@ class PreparePrint():
     def open_img(self, path):
         img = Image.open(path)
         return img
+
 
     def get_size(self, path):
         img = Image.open(path)
@@ -47,3 +43,36 @@ class PreparePrint():
                     result_image.putpixel((x, y), image_data[y * width + x])
 
         return result_image
+
+
+    def change_propotion_12(self, image):
+        
+        ### J750, XY : 300DPI, 600DPI
+        
+        w, h = image.size
+        changed_image = Image.new("RGBA", [w * 2, h])
+        
+        image_data = image.getdata()
+
+        for y in range(h):
+            for x in range(w):
+                pix = image_data[y * w + x]
+                changed_image.putpixel((x * 2, y), pix)
+                changed_image.putpixel((x * 2 + 1, y), pix)
+        
+        return changed_image
+
+    
+    def check_color(self, image):
+
+        color_list = set([])
+
+        w, h = image.size
+        image_data = image.getdata()
+
+        for y in range(h):
+            for x in range(w):
+                pix = image_data[y * w + x]
+                color_list.add(pix)
+        
+        return list(color_list)
