@@ -76,3 +76,22 @@ class PreparePrint():
                 color_list.add(pix)
         
         return list(color_list)
+    
+
+    def replace_color_clear(self, image):
+
+        w, h = image.size
+        replaced_image = Image.new("RGBA", [w, h])
+        
+        image_data = image.getdata()
+
+        for y in range(h):
+            for x in range(w):
+                pix = image_data[y * w + x]
+
+                if pix == (227, 233, 253, 255):
+                    replaced_image.putpixel((x, y), (227, 233, 253, 0))
+                else:
+                    replaced_image.putpixel((x, y), pix)
+        
+        return replaced_image
